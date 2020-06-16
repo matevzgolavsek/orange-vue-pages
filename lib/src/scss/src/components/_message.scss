@@ -1,0 +1,133 @@
+/**
+ * Message
+ */
+
+.o-message {
+  font-size: $o-message-font-size;
+  padding: $o-message-padding;
+  border-radius: $o-message-border-radius;
+  color: $o-message-color;
+  background-color: $o-message-background-color;
+  font-style: $o-message-font-style;
+  margin-bottom: $o-message-margin-bottom;
+  display: flex;
+  align-items: center;
+
+  p {
+    margin-bottom: $o-spacing-small;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  a {
+    font-weight: $o-message-link-font-weight;
+    text-decoration: $o-message-link-text-decoration;
+    color: $o-message-link-color;
+
+    &:hover {
+      text-decoration: $o-message-link-hover-text-decoration;
+    }
+  }
+
+  .o-avatar {
+    margin-right: $o-message-avatar-margin-right;
+    display: inline-block;
+    vertical-align: middle;
+    color: currentColor;
+    border-color: currentColor;
+  }
+
+  & + & {
+    margin-top: $o-spacing-small;
+  }
+}
+
+.o-message__body {
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-weight: $o-message-body-headings-font-weight;
+  }
+}
+
+.o-message__action {
+  margin-left: auto;
+}
+
+
+/** Colors
+--------------------------------------------------*/
+
+@each $o-name, $o-value in $o-colors {
+  @if $o-name == 'white' {
+    .o-message--color-#{$o-name} {
+      color: color('gray', 'dark');
+      background-color: color('white');
+
+      a {
+        color: color('gray', 'dark');
+      }
+
+      .o-avatar {
+        border: 1px solid color('gray', 'dark');
+        color: color('gray', 'dark');
+      }
+    }
+  } @else {
+    .o-message--color-#{$o-name} {
+      background-color: rgba(color(#{$o-name}), 0.1);
+      color: color(#{$o-name});
+      border-width: 0;
+
+      a {
+        color: color(#{$o-name});
+      }
+
+      .o-avatar {
+        border: 1px solid color(#{$o-name});
+        color: color(#{$o-name});
+      }
+
+      /** Interactive style */
+      &.o-message--interactive {
+        background-color: color(#{$o-name});
+        color: color('white');
+      }
+    }
+  }
+}
+
+
+/** Styles
+--------------------------------------------------*/
+
+/** Full width */
+.o-message--full {
+  border-radius: 0;
+}
+
+/** With a shadow */
+.o-message--shadow {
+  box-shadow: $o-message-shadow;
+}
+
+/** Interactive */
+.o-message--interactive {
+  min-height: 80px;
+  padding: ($o-spacing-base / 2) ($o-spacing-base / 2) ($o-spacing-base / 2) 120px;
+  background-image: url('https://fomo.o-com/static/images/app/onboarding/onboarding-avatar.o-svg');
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  border-radius: $o-border-radius-medium;
+
+  a {
+    font-weight: fontWeight('normal');
+    text-decoration: none;
+    color: color('white');
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

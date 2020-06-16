@@ -1,0 +1,183 @@
+/**
+ * Toggle
+ */
+
+.o-toggle {
+  position: relative;
+  
+  * {
+    transition: $o-toggle-transition;
+  }
+}
+
+/** Toggle button
+--------------------------------------------------*/
+
+.o-toggle__button {
+  position: relative;
+  height: $o-toggle-button-height;
+}
+
+
+/** Toggle input
+--------------------------------------------------*/
+
+.o-toggle__input {
+  height: $o-toggle-input-height;
+  width: $o-toggle-input-width;
+  position: absolute;
+  z-index: 3;
+  opacity: 0;
+  visibility: hidden;
+  cursor: pointer;
+}
+
+/** Toggle label
+--------------------------------------------------*/
+
+.o-toggle__label {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  height: $o-toggle-label-height;
+  padding-left: $o-toggle-label-padding-left;
+  line-height: $o-toggle-label-line-height;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:before, &:after {
+    display: block;
+    position: absolute;
+  }
+
+  &:before {
+    content: '';
+    border-radius: $o-toggle-label-before-border-radius;
+    height: $o-toggle-label-before-height;
+    width: $o-toggle-label-before-width;
+    background-color: $o-toggle-label-before-background-color;
+    opacity: $o-toggle-label-before-opacity;
+    top: 0;
+    left: 0;
+    transition: $o-toggle-transition;
+  }
+
+  &:after {
+    content: '';
+    width: $o-toggle-label-after-width;
+    height: $o-toggle-label-after-height;
+    top: $o-toggle-label-after-top;
+    left: $o-toggle-label-after-left;
+    border-radius: $o-toggle-label-after-border-radius;
+    background-color: $o-toggle-label-after-background-color;
+    box-shadow: $o-toggle-label-after-box-shadow;
+    transition: $o-toggle-transition;
+  }
+}
+
+
+/** States
+--------------------------------------------------*/
+
+/** Checked */
+.o-toggle.is-checked {
+  .o-toggle__label {
+    color: $o-toggle-checked-label-text-color;
+  }
+
+  .o-toggle__label:before {
+    background: $o-toggle-checked-label-before-background-color;
+    opacity: 1;
+  }
+
+  .o-toggle__label:after {
+    left: $o-toggle-checked-label-after-left;
+  }
+}
+
+/** Disabled */
+.o-toggle.is-disabled {
+  cursor: default;
+  pointer-events: none;
+
+  .o-toggle__label::before {
+    opacity: $o-toggle-disabled-label-before-opacity;
+  }
+}
+
+/** With label */
+.o-toggle--label {
+  .o-toggle__label {
+    padding-left: $o-toggle-label-label-padding-left;
+  }
+}
+
+/** Sizes
+--------------------------------------------------*/
+
+/** Large */
+.o-toggle--large {
+  .o-toggle__value {
+    border: 1px solid transparent;
+    padding: $o-toggle-large-value-padding;
+    font-size: $o-toggle-large-value-font-size;
+    color: $o-toggle-large-value-text-color;
+    width: $o-toggle-large-value-width;
+    line-height: $o-toggle-large-value-line-height;
+    min-height: $o-toggle-large-value-min-height;
+  }
+
+  .o-toggle__text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: $o-toggle-large-text-min-height;
+    border: $o-toggle-large-text-border;
+    border-radius: $o-toggle-large-text-border-radius;
+    width: $o-toggle-large-text-width;
+    line-height: $o-toggle-large-text-line-height;
+    padding: $o-toggle-large-text-padding;
+    font-size: $o-toggle-large-text-font-size;
+    color: $o-toggle-large-text-text-color;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .o-toggle__button {
+    position: absolute;
+    right: $o-toggle-large-button-right;
+    top: $o-toggle-large-button-top;
+  }
+  
+  .o-toggle__label {
+    padding-left: $o-toggle-large-label-padding-left;
+  }
+
+  &.is-disabled {
+    cursor: default;
+    pointer-events: none;
+
+    .o-toggle__value {
+      color: $o-toggle-large-disabled-value-text-color;
+    }
+  }
+}
+
+
+
+/** Colors
+--------------------------------------------------*/
+
+@each $o-name, $o-value in $o-colors {
+  .o-toggle--color-#{$o-name} {
+    &.is-checked {
+      .o-toggle__label:before {
+        background: color(#{$o-name});
+      }
+    }
+  }
+}

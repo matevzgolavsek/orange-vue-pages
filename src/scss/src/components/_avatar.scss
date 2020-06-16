@@ -1,0 +1,53 @@
+/**
+ * Avatar
+ */
+
+.o-avatar {
+  width: $o-avatar-width-height;
+  height: $o-avatar-width-height;
+  color: $o-avatar-color;
+  overflow: hidden;
+
+  svg {
+    width: 100%;
+    fill: currentColor;
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+/** Sizes
+--------------------------------------------------*/
+.o-avatar--size-auto {
+  width: 100%;
+  height: 100%;
+}
+
+.o-avatar--size-small {
+  width: $o-avatar-small-width-height;
+  height: $o-avatar-small-width-height;
+}
+
+.o-avatar--size-large {
+  width: $o-avatar-large-width-height;
+  height: $o-avatar-large-width-height;
+}
+
+/** Looks
+--------------------------------------------------*/
+
+.o-avatar--circle {
+  border-radius: 100%;
+  border: 1px solid $o-avatar-color;
+}
+
+/** Colors
+--------------------------------------------------*/
+@each $o-name, $o-value in $o-colors {
+  .o-avatar--color-#{$o-name} {
+    color: color(#{$o-name});
+    border-color: color(#{$o-name});
+  }
+}

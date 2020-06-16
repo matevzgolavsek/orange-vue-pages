@@ -1,0 +1,60 @@
+/**
+ * Variables - Grid
+ */
+
+/**
+ * Gap
+ */
+/* Desktop */
+$o-grid-gap: 12px !default;
+$o-container-gap: 12px !default;
+
+/* Mobile */
+$o-grid-gap-mobile: $o-grid-gap !default;
+$o-container-gap-mobile: $o-container-gap !default;
+
+/**
+ * Container
+ */
+$o-container-max-width: 100% !default;
+$o-container-max-widths: (
+  xs: 480px,
+  sm: 580px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1280px
+) !default;
+
+/**
+ * Column
+ */
+/** Includes */
+$o-include-grid-column: true !default;
+$o-include-grid-column-span: true !default;
+$o-include-grid-column-exact: true !default;
+$o-include-grid-column-from-to: true !default;
+$o-include-grid-column-auto-fill: true !default;
+$o-include-grid-number-of-columns: true !default;
+
+/** Basic */
+$o-grid-column-number: 12 !default;
+
+/** Width */
+$o-grid-column-narrow-min-width: 120px !default;
+$o-grid-column-regular-min-width: 240px !default;
+$o-grid-column-wide-min-width: 360px !default;
+$o-grid-column-max-width: 1fr !default;
+
+/**
+ * Row
+ */
+/** Includes */
+$o-include-grid-row: true !default;
+$o-include-grid-row-span: true !default;
+$o-include-grid-row-exact: true !default;
+$o-include-grid-row-from-to: true !default;
+
+/** Basic */
+$o-grid-row-number: 12 !default;
+

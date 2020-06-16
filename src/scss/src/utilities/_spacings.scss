@@ -1,0 +1,28 @@
+/*----------------------------------*\
+    Spacings
+\*----------------------------------*/
+
+/* Spacings class loop with names */
+@each $prefix, $meaning in $o-spacing-classes {
+  @each $name, $size in $o-spaces {
+    .#{$prefix}-#{$name} {
+      #{$meaning}: #{$size};
+    }
+  }
+}
+
+
+/* Spacings class loop - Responsive */
+@if $o-spacing-classes-with-breakpoints {
+  @each $breakpoint-key, $breakpoint-value in $o-breakpoints {
+    @each $prefix, $meaning in $o-spacing-classes {
+      @each $name, $size in $o-spaces {
+        @include breakpoint-and-up($breakpoint-key) {
+          .#{$breakpoint-key}\:#{$prefix}-#{$name} {
+            #{$meaning}: #{$size};
+          }
+        }
+      }
+    }
+  }
+}

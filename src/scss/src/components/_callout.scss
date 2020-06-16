@@ -1,0 +1,115 @@
+/**
+ * Callout
+ */
+
+.o-callout {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+
+  padding: $o-callout-padding;
+  border-radius: $o-callout-border-radius;
+  margin-bottom: $o-callout-margin-bottom;
+  transition: $o-callout-transition;
+
+  background-color: $o-callout-background-color;
+  color: $o-callout-text-color;
+  text-align: center;
+  font-size: $o-callout-font-size;
+  cursor: default;
+
+  p {
+    margin-bottom: $o-spacing-base / 2;
+
+    &:last-of-type {
+      margin-bottom: auto;
+    }
+  }
+
+  a {
+    color: $o-callout-link-color;
+    font-weight: fontWeight('bold');
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+
+/** Colors
+--------------------------------------------------*/
+
+@each $o-name, $o-value in $o-colors {
+  @if $o-name == 'white' {
+    .o-callout--color-#{$o-name} {
+      color: color('gray', 'dark');
+      background-color: color('white');
+
+      &.o-callout--action:hover {
+        background-color: color('gray', 'lightest');
+      }
+
+      a {
+        color: color('gray', 'dark');
+      }
+    }
+  } @else {
+    @each $o-colorKey, $o-colorValue in $o-value {
+      @if ($o-colorKey == 'base') {
+        .o-callout--color-#{$o-name} {
+          background-color: color(#{$o-name});
+          color: color('white');
+          border-width: 0;
+
+          a {
+            color: color(#{$o-name});
+          }
+
+          &.o-callout--action:hover {
+            background-color: lighten(color(#{$o-name}), $o-callout-color-action-hover-background-color-lighten);
+          }
+        }
+      } @else {
+        .o-callout--color-#{$o-name}-#{$o-colorKey} {
+          background-color: #{$o-colorValue};
+          color: color('white');
+          border-width: 0;
+
+          a {
+            color: #{$o-colorValue};
+          }
+
+          &.o-callout--action:hover {
+            background-color: adjust-color($o-colorValue, $lightness: $o-callout-color-action-hover-background-color-lightness);
+          }
+        }
+      }
+    }
+  }
+}
+
+
+/** Styles
+--------------------------------------------------*/
+
+/** With a shadow */
+.o-callout--shadow {
+  box-shadow: $o-callout-shadow-box-shadow;
+}
+
+/** With an image */
+.o-callout__image {
+  padding: $o-callout-image-padding;
+}
+
+/* Hover action */
+.o-callout--action {
+  &:hover {
+    cursor: pointer;
+    background-color: $o-callout-action-hover-background-color;
+  }
+}

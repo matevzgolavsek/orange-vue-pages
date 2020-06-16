@@ -1,0 +1,183 @@
+/**
+ * Progress bar
+ */
+
+.o-progress-bar {
+  position: relative;
+  line-height: 1;
+
+  .o-progress-bar__text {
+    font-size: fontSize('zeta');
+    color: inherit;
+    line-height: 1;
+  }
+}
+
+.o-progress-bar__line {
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%;
+  box-sizing: border-box;
+
+  .o-progress-bar__line-outer {
+    height: 6px;
+    border-radius: $o-border-radius-progress-bar;
+    overflow: hidden;
+    position: relative;
+    vertical-align: middle;
+
+    &::before {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: currentColor;
+      opacity: 0.12;
+      content: '';
+    }
+  }
+
+  .o-progress-bar__line-inner {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background-color: color('secondary');
+    line-height: 1;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .o-progress-bar__line-innerText {
+    display: inline-block;
+    vertical-align: middle;
+    color: color('white');
+    font-size: fontSize('omega');
+    font-weight: fontWeight('medium');
+    margin: 0 5px;
+
+    &.o-progress-bar__line-innerText--below {
+      transform: translateX(calc(100% + 10px));
+      color: currentColor;
+    }
+
+    .o-progress-bar__custom-text {
+      color: color('white');
+    }
+  }
+
+  & + .o-progress-bar__text {
+    color: color('gray', 'light') !important;
+  }
+}
+
+.o-progress-bar__custom-text {
+  color: color('gray', 'light');
+}
+
+@keyframes progress {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 32px 0;
+  }
+}
+
+
+/** Styles
+--------------------------------------------------*/
+
+/** Line */
+.o-progress-bar--line {
+  .o-progress-bar__text {
+    margin-top: 6px;
+  }
+}
+
+/** Circular */
+.o-progress-bar--circle {
+  display: inline-block;
+
+  .o-progress-bar__circle-track {
+    stroke: currentColor;
+    opacity: 0.12;
+  }
+
+  .o-progress-bar__text {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    transform: translate(0, -50%);
+
+    i {
+      vertical-align: middle;
+      display: inline-block;
+    }
+  }
+
+  .o-progress-bar__custom-text {
+    display: block;
+  }
+}
+
+.o-progress-bar--without-text {
+  .o-progress-bar__text {
+    display: none;
+  }
+
+  .o-progress-bar__line {
+    padding-right: 0;
+    margin-right: 0;
+    display: block;
+  }
+}
+
+.o-progress-bar--text-inside {
+  .o-progress-bar__line {
+    padding-right: 0;
+    margin-right: 0;
+  }
+}
+
+
+/** States
+--------------------------------------------------*/
+
+/** Disabled */
+.o-progress-bar.is-disabled {
+  opacity: 0.5;
+
+  /** Line */
+  .o-progress-bar__line {
+    .o-progress-bar__line-outer {
+      &::before {
+        background-color: color('gray');
+      }
+    }
+
+    .o-progress-bar__line-inner {
+      background-color: color('gray', 'light') !important;
+    }
+  }
+
+  /** Circle */
+  .o-progress-bar__circle-track {
+    stroke: color('gray');
+  }
+
+  .o-progress-bar__circle-path {
+    stroke: color('gray', 'light');
+  }
+
+  .o-progress-bar__text {
+    color: color('gray', 'light');
+  }
+}

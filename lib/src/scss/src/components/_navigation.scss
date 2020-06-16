@@ -1,0 +1,159 @@
+/**
+ * Navigation
+ */
+
+
+.o-nav {
+
+  /** Menu
+  --------------------------------------------------*/
+  > ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    padding-bottom: $o-nav-padding-bottom;
+    display: flex;
+    user-select: none;
+  }
+
+
+  /** Item
+  --------------------------------------------------*/
+  > ul > li {
+    &:first-child {
+      margin-left: $o-nav-item-first-margin-left;
+    }
+  }
+
+  /** Link
+  --------------------------------------------------*/
+  > ul > li > a {
+    font-size: $o-nav-link-font-size;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: $o-nav-link-padding;
+    color: rgba($o-nav-link-color, $o-nav-link-color-opacity);
+    height: $o-nav-link-height;
+
+    &:hover {
+      color: rgba($o-nav-link-color, $o-nav-link-hover-color-opacity);
+      text-decoration: none;
+
+      &::before {
+        opacity: 1;
+        cursor: pointer;
+      }
+    }
+
+    /** Active state */
+    &.is-active,
+    &.is-exact-active.is-active,
+    &.router-link-exact-active {
+      color: rgba($o-nav-link-color, $o-nav-link-active-color-opacity);
+
+      &::after {
+        content: " ";
+        position: absolute;
+        border-bottom: 1px solid;
+        border-bottom-color: $o-nav-link-color;
+        z-index: 1;
+        width: $o-nav-link-active-after-width;
+        left: $o-nav-link-active-after-left;
+        bottom: $o-nav-link-active-after-bottom;
+      }
+    }
+
+    /** Disabled state */
+    &.is-disabled {
+      cursor: default;
+      pointer-events: none;
+      opacity: $o-nav-link-disabled-opacity;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      background-color: rgba($o-nav-link-color, $o-nav-link-background-color-opacity);
+      pointer-events: none;
+      width: $o-nav-link-before-width;
+      height: $o-nav-link-before-height;
+      left: $o-nav-link-before-left;
+      top: $o-nav-link-before-top;
+      border-radius: $o-nav-link-before-border-radius;
+      opacity: $o-nav-link-before-opacity;
+    }
+  }
+
+  /** Icon
+  --------------------------------------------------*/
+  [class^="o-icon-"],
+  [class*=" o-icon-"] {
+    margin-right: $o-nav-icon-margin-right;
+  }
+}
+
+
+
+/** Colors
+--------------------------------------------------*/
+
+@each $o-name, $o-value in $o-colors {
+  .o-nav--color-#{$o-name} {
+    ul > li > a {
+      color: rgba(color(#{$o-name}), $o-nav-color-link-color-opacity);
+
+      &:hover {
+        color: rgba(color(#{$o-name}), $o-nav-color-link-color-opacity-hover);
+      }
+
+      &::after {
+        border-bottom-color: color(#{$o-name});
+      }
+
+      &::before {
+        background-color: rgba(color(#{$o-name}), $o-nav-color-link-background-color-opacity);
+      }
+
+      &.is-active,
+      &.is-exact-active.is-active,
+      &.router-link-exact-active {
+        color: rgba(color(#{$o-name}), $o-nav-color-link-color-opacity-active);
+
+        &::after {
+          border-bottom-color: color(#{$o-name});
+        }
+      }
+    }
+  }
+}
+
+/** Alignments
+--------------------------------------------------*/
+.o-nav--center {
+  > ul {
+    justify-content: center;
+  }
+
+  > ul > li {
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+.o-nav--right {
+  > ul {
+    justify-content: flex-end;
+  }
+
+  > ul > li {
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: $o-nav-right-item-last-margin-right;
+    }
+  }
+}

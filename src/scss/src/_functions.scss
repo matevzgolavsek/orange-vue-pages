@@ -1,0 +1,83 @@
+/**
+ * Functions
+ */
+
+/** Helpers
+--------------------------------------------------*/
+
+@function map-deep-get($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+  @return $map;
+}
+
+
+/** Colors
+--------------------------------------------------*/
+
+@function color($color, $shade...) {
+  @if ($shade == ()) {
+    @return map-deep-get($o-colors, $color, 'base');
+  } @else {
+    @return map-deep-get($o-colors, $color, nth($shade, 1));
+  }
+}
+
+
+/** Typography
+--------------------------------------------------*/
+
+/** Font sizes */
+@function fontSize($size) {
+  @return map-get($o-font-sizes, $size);
+}
+
+/** Font weights */
+@function fontWeight($weight) {
+  @return map-get($o-font-weights, $weight);
+}
+
+
+/** Shadows
+--------------------------------------------------*/
+
+@function shadow($shadow) {
+  @return map-get($o-shadows, $shadow);
+}
+
+/** Breakpoints
+--------------------------------------------------*/
+@function breakpoint($breakpoint) {
+  @return map-get($o-breakpoints, $breakpoint);
+}
+
+/** Border radius
+--------------------------------------------------*/
+@function rounded($border-radius) {
+  @return map-get($o-border-radiuses, $border-radius);
+}
+
+/** Display
+--------------------------------------------------*/
+@function display($display) {
+  @return map-get($o-displays, $display);
+}
+
+/** Spacing
+--------------------------------------------------*/
+@function space($space) {
+  @return map-get($o-spaces, $space);
+}
+
+/** Components
+--------------------------------------------------*/
+
+/**
+ * Breadcrumbs
+ */
+/** Button */
+// Before
+@function breadcrumbs-back-button-arrow-color($color, $transparency: $o-breadcrumbs-background-transparency) {
+  @return $o-breadcrumbs-spacing solid rgba($color, $transparency);
+}

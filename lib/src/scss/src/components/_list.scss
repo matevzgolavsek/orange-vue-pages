@@ -1,0 +1,145 @@
+/**
+ * List
+ */
+
+ul, ol {
+  padding-left: $o-ul-ol-padding-left;
+  margin: 0;
+}
+
+.o-list {
+  padding: $o-list-padding;
+}
+
+/** Item
+--------------------------------------------------*/
+
+.o-list__item, .o-list > li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  padding-left: $o-list-item-horizontal-padding;
+  padding-right: $o-list-item-horizontal-padding;
+
+  /** Disabled state */
+  &.is-disabled {
+    background-color: $o-list-item-disabled-background-color;
+  }
+
+  .o-list__item-title, h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    font-size: inherit;
+  }
+
+  .o-list__item-description, p {
+    margin-bottom: 0;
+    color: $o-list-item-description-color;
+    font-size: $o-list-item-description-font-size; /** set description text to 90% size relative to style's font size */
+  }
+}
+
+
+/** Action
+--------------------------------------------------*/
+
+.o-list__action {
+  margin-left: auto;
+}
+
+
+/** Styles
+--------------------------------------------------*/
+
+/** Divide */
+.o-list--divide {
+  .o-list__item, > li {
+    border-top: $o-list-divide-item-top-border;
+
+    &:first-child {
+      border-top: none;
+    }
+  }
+}
+
+/** Large */
+.o-list--large {
+  font-size: $o-list-large-font-size;
+
+  .o-list__item, > li {
+    padding-top: $o-list-large-item-vertical-padding;
+    padding-bottom: $o-list-large-item-vertical-padding;
+  }
+
+  .o-list__item-title, h1, h2, h3, h4, h5, h6 {
+    margin-bottom: $o-list-large-item-title-margin-bottom;
+  }
+
+  .o-list__item-description, p {
+    font-size: $o-list-large-item-description-font-size;
+  }
+}
+
+/** Medium */
+.o-list--medium {
+  font-size: $o-list-medium-font-size;
+
+  .o-list__item, > li {
+    padding-top: $o-list-medium-item-vertical-padding;
+    padding-bottom: $o-list-medium-item-vertical-padding;
+  }
+
+  .o-list__item-title, h1, h2, h3, h4, h5, h6 {
+    margin-bottom: $o-list-medium-item-title-margin-bottom;
+  }
+
+  .o-list__item-description, p {
+    font-size: $o-list-medium-item-description-font-size;
+  }
+}
+
+/** Small */
+.o-list--small {
+  font-size: $o-list-small-font-size;
+
+  .o-list__item, > li {
+    padding-top: $o-list-small-item-vertical-padding;
+    padding-bottom: $o-list-small-item-vertical-padding;
+  }
+
+  .o-list__item-title, h1, h2, h3, h4, h5, h6 {
+    margin-bottom: $o-list-small-item-title-margin-bottom;
+  }
+
+  .o-list__item-description, p {
+    font-size: $o-list-small-item-description-font-size;
+  }
+
+  [class^="o-icon-"],
+  [class*=" o-icon-"] {
+    font-size: $o-list-small-item-icon-font-size;
+  }
+}
+
+/** Without gutter */
+.o-list--no-gutter {
+  margin: $o-list-no-gutter-margin;
+}
+
+/** Hover */
+.o-list--hover {
+  .o-list__item, > li {
+    &:hover {
+      background-color: $o-list-hover-item-hover-background-color;
+    }
+  }
+}
+
+/** Pointer */
+.o-list--pointer {
+  .o-list__item, > li {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

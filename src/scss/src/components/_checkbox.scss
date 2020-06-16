@@ -1,0 +1,126 @@
+/**
+ * Checkbox
+ */
+
+
+/** Checkbox group
+--------------------------------------------------*/
+.o-checkbox-group {
+  height: $o-checkbox-group-height;
+  padding: $o-checkbox-group-padding;
+  border: $o-checkbox-group-border;
+  border-radius: $o-checkbox-group-border-radius;
+}
+
+
+/** Checkbox group label
+--------------------------------------------------*/
+
+.o-checkbox-group__label {
+  margin-bottom: $o-checkbox-bottom-margin;
+  font-size: $o-checkbox-label-font-size;
+  line-height: 1;
+  color: $o-checkbox-label-text-color;
+}
+
+
+/** Checkbox
+--------------------------------------------------*/
+
+.o-checkbox {
+  display: inline-block;
+  position: relative;
+  font-size: $o-checkbox-font-size;
+
+  * {
+    transition: $o-transition;
+  }
+
+  & + & {
+    margin-left: $o-spacing-base;
+    margin-left: $o-checkbox-next-checkbox-margin-left;
+  }
+
+  /** Checkbox input
+  --------------------------------------------------*/
+  > input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  /** Checkbox label
+  --------------------------------------------------*/
+  > label {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    background: transparent;
+    cursor: pointer;
+    padding-left: $o-checkbox-label-padding-left;
+    min-height: $o-checkbox-label-width-height;
+    color: $o-checkbox-color;
+    opacity: $o-checkbox-label-opacity;
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      height: $o-checkbox-label-width-height;
+      width: $o-checkbox-label-width-height;
+      transform: translateY(-50%);
+      border: 1px solid $o-checkbox-color;
+      content: '';
+      border-radius: $o-checkbox-border-radius;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "fomo-icons";
+      color: $o-checkbox-label-before-text-color;
+      font-size: $o-checkbox-label-before-font-size; /** equals 24px */
+      transform: $o-checkbox-label-before-transition;
+    }
+  }
+}
+
+
+
+/** States
+--------------------------------------------------*/
+
+.o-checkbox {
+  
+  /** Checked */
+  > input:checked {
+    + label {
+      opacity: $o-checkbox-label-checked-opacity;
+    }
+
+    + label::before {
+      content: "\e821";
+      background-color: $o-checkbox-color;
+    }
+  }
+
+  /** Disabled and checked */
+  > input:disabled {
+    + label {
+      color: $o-checkbox-disabled-color;
+      cursor: default;
+
+      &::before {
+        border-color: $o-checkbox-disabled-color;
+      }
+    }
+    
+    &:checked {
+      + label::before {
+        background-color: $o-checkbox-disabled-color;
+      }
+    }
+  }
+}

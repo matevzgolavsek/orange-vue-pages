@@ -1,0 +1,135 @@
+/**
+ * Radio
+ */
+
+
+/** Radio group
+--------------------------------------------------*/
+
+.o-radio-group {
+  height: $o-radio-group-height;
+  padding: $o-radio-group-padding;
+  border: $o-radio-group-border;
+  border-radius: $o-radio-group-border-radius;
+}
+
+
+/** Radio group label
+--------------------------------------------------*/
+
+.o-radio-group__label {
+  margin-bottom: $o-radio-bottom-margin;
+  font-size: $o-radio-label-font-size;
+  line-height: 1;
+  color: $o-radio-label-text-color;
+}
+
+
+/** Radio
+--------------------------------------------------*/
+
+.o-radio {
+  display: inline-block;
+  position: relative;
+  font-size: $o-radio-font-size;
+
+  & + & {
+    margin-left: $o-spacing-base;
+  }
+
+  /** Radio Input
+  --------------------------------------------------*/
+
+  > input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  /** Radio label
+  --------------------------------------------------*/
+  > label {
+    font-size: $o-radio-font-size;
+    display: flex;
+    align-items: center;
+    min-height: $o-radio-width-height;
+    padding-left: $o-radio-label-padding-left;
+    position: relative;
+    line-height: 1;
+    cursor: pointer;
+    color: $o-radio-color;
+    opacity: $o-radio-label-opacity;
+
+    &::before {
+      height: $o-radio-width-height;
+      width: $o-radio-width-height;
+      border: 1px solid $o-radio-color;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      background-color: transparent;
+      border-radius: $o-radio-border-radius;
+      content: '';
+    }
+
+    &::after {
+      width: $o-spacing-small;
+      height: $o-spacing-small;
+      top: $o-radio-label-after-top;
+      left: $o-radio-label-after-left;
+      position: absolute;
+      background-color: $o-radio-color;
+      border-radius: $o-radio-border-radius;
+      content: '';
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+}
+
+
+
+/** States
+--------------------------------------------------*/
+
+.o-radio {
+  
+  /** Checked state */
+  > input:checked {
+    + label {
+      opacity: 1;
+
+      &::after {
+        opacity: 1;
+        visibility: visible;
+        background-color: $o-radio-color;
+      }
+    }
+  }
+
+  /** Disabled and checked */
+  > input:disabled {
+    + label {
+      pointer-events: none;
+      color: $o-radio-disabled-color;
+
+      &::before {
+        border-color: $o-radio-disabled-color
+      }
+
+      &::after {
+        background-color: $o-radio-disabled-color;
+      }
+    }
+
+    &:checked {
+      + label {
+        &::after {
+          background-color: $o-radio-disabled-color;
+        }
+      }
+    }
+  }
+}

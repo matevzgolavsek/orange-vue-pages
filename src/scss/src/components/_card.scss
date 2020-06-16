@@ -1,0 +1,153 @@
+/**
+ * Card
+ */
+
+.o-card {
+  border-radius: $o-card-border-radius;
+  background-color: $o-card-background-color;
+  box-shadow: $o-card-shadow;
+}
+
+/** Image
+--------------------------------------------------*/
+
+.o-card__image {
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: $o-card-border-radius $o-card-border-radius 0 0;
+  }
+}
+
+/** Header
+--------------------------------------------------*/
+
+.o-card__header {
+  border-bottom: $o-card-header-border;
+  border-radius: $o-card-header-border-radius;
+  padding: $o-card-header-padding;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: $o-card-header-height;
+  // spacing base accounts for 12px top and 12px bottom padding
+  // 40px is large button's size
+
+  .o-form {
+    min-width: $o-card-header-form-min-width;
+  }
+
+  // Card Title
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: $o-card-header-heading-font-weight;
+    color: $o-card-header-heading-color;
+    padding-left: $o-card-header-heading-padding-left;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+}
+
+/** Body
+--------------------------------------------------*/
+
+.o-card__body {
+  padding: $o-card-body-padding;
+}
+
+
+/** Section
+--------------------------------------------------*/
+
+.o-card__section {
+  border-bottom: $o-card-section-border;
+  padding-bottom: $o-card-section-padding;
+
+  &:last-of-type {
+    border: $o-card-section-last-border;
+  }
+
+  .o-card__header {
+    h1, h2, h3, h4, h5, h6 {
+      padding-left: 0;
+    }
+  }
+
+  .o-card__header {
+    margin-left: $o-card-section-header-horizontal-margin;
+    margin-right: $o-card-section-header-horizontal-margin;
+    padding-left: $o-card-section-header-horizontal-padding;
+    padding-right: $o-card-section-header-horizontal-padding;
+  }
+
+  .o-card__body {
+    margin-left: $o-card-section-body-horizontal-margin;
+    margin-right: $o-card-section-body-horizontal-margin;
+    padding-left: $o-card-section-body-horizontal-padding;
+    padding-right: $o-card-section-body-horizontal-padding;
+  }
+
+  .o-card__footer {
+    margin-left: $o-card-section-footer-horizontal-margin;
+    margin-right: $o-card-section-footer-horizontal-margin;
+    padding-left: $o-card-section-footer-horizontal-padding;
+    padding-right: $o-card-section-footer-horizontal-padding;
+  }
+}
+
+/** Footer
+--------------------------------------------------*/
+
+.o-card__footer {
+  border-radius: $o-card-footer-border-radius;
+  border-top: $o-card-footer-border;
+  min-height: $o-card-footer-min-height;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $o-card-footer-padding;
+  transition: $o-card-footer-transition;
+
+  &:empty {
+    min-height: $o-card-footer-empty-min-height;
+    height: $o-card-footer-empty-height;
+    padding: $o-card-footer-empty-padding;
+    border-top: $o-card-footer-empty-border-top;
+  }
+}
+
+.o-card__footer--click {
+  color: $o-card-footer-click-color;
+
+  &:hover {
+    color: $o-card-footer-click-hover-color;
+    cursor: pointer;
+    background-color: $o-card-footer-click-hover-background-color;
+  }
+}
+
+
+/** Styles
+--------------------------------------------------*/
+
+/** With navigation */
+.o-card__header .o-nav {
+  margin-left: $o-card-header-nav-margin;
+
+  > ul {
+    padding: 0;
+  }
+}
+
+/** No gutter */
+.o-card--full {
+  .o-card__body {
+    padding: 0;
+  }
+
+  .o-card__section-header {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+  }
+}

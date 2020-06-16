@@ -1,0 +1,285 @@
+/**
+ * Form
+ */
+
+.o-form + .o-form {
+  margin-top: $o-spacing-base;
+}
+
+/** Form item
+--------------------------------------------------*/
+
+.o-form__item {
+  position: relative;
+  margin-bottom: $o-spacing-base;
+
+  * {
+    transition: $o-transition;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+
+/** Form wrapper
+--------------------------------------------------*/
+
+.o-form__wrapper {
+  display: flex;
+}
+
+
+/** Form input wrapper
+--------------------------------------------------*/
+
+.o-form__input-wrapper {
+  position: relative;
+  flex: 1;
+  z-index: 4;
+}
+
+
+/** Form input and textarea
+--------------------------------------------------*/
+
+.o-form__input,
+.o-form__textarea {
+  font-size: $o-input-font-size;
+  padding: $o-input-padding;
+  color: $o-input-color;
+  border-radius: $o-input-border-radius;
+  display: block;
+  width: $o-input-width;
+  border: $o-input-border;
+  line-height: $o-input-line-height;
+  height: auto;
+
+  &:focus {
+    color: $o-input-focus-color;
+    box-shadow: $o-input-focus-shadow;
+    border-color: $o-input-focus-border-color;
+    outline: 0;
+  }
+
+  &::placeholder {
+    opacity: 0;
+  }
+
+  &[disabled] {
+    background-color: $o-input-disabled-background-color;
+    opacity: $o-input-disabled-opacity;
+    color: $o-input-disabled-color;
+
+    &:focus {
+      box-shadow: $o-input-disabled-focus-shadow;
+      border: $o-input-disabled-focus-border;
+    }
+  }
+
+  &[readonly] {
+    background-color: $o-input-readonly-background-color;
+    opacity: $o-input-readonly-opacity;
+    color: $o-input-readonly-color;
+
+    &:focus {
+      box-shadow: $o-input-readonly-focus-shadow;
+      border: $o-input-readonly-focus-border;
+    }
+  }
+
+  &:-webkit-autofill {
+    border-color: $o-input-webkit-autofill-border-color;
+    -webkit-text-fill-color: $o-input-webkit-autofill-text-fill-color;
+  }
+
+  &.has-focus,
+  &.has-value {
+    + .o-form__label {
+      display: none;
+    }
+  }
+}
+
+/** Remove iOS shadow on input */
+.o-form__input {
+  &[type=text] {
+    appearance: none;
+  }
+}
+
+.o-form__textarea {}
+
+
+/** Form label
+--------------------------------------------------*/
+
+.o-form__label {
+  position: absolute;
+  top: $o-input-label-top;
+  left: $o-input-label-left;
+  margin: $o-input-label-margin;
+  font-size: $o-input-label-font-size;
+  font-weight: $o-input-label-font-weight;
+  line-height: $o-input-label-line-height;
+  color: $o-input-label-color;
+}
+
+
+/** Form action
+--------------------------------------------------*/
+
+.o-form__extras,
+.o-form__action {
+  height: $o-input-height;
+  padding: $o-input-action-padding;
+  display: flex;
+  align-items: center;
+  z-index: 3;
+  border: $o-input-action-border;
+  margin-right: -1px;
+  border-top-left-radius: $o-input-action-border-top-left-radius;
+  border-bottom-left-radius: $o-input-action-border-bottom-left-radius;
+  background-color: $o-input-action-background-color;
+}
+
+
+/** Form message
+--------------------------------------------------*/
+
+.o-form__message {
+  margin-top: $o-input-message-margin-top;
+  font-size: $o-input-message-font-size;
+  color: $o-input-message-color;
+}
+
+
+/** Form description
+--------------------------------------------------*/
+
+.o-form__description {
+  color: $o-input-description-color;
+  font-size: $o-input-description-font-size;
+  margin-top: $o-input-description-margin-top;
+  margin-bottom: $o-input-description-margin-bottom;
+}
+
+
+
+/** States
+--------------------------------------------------*/
+
+.o-form__item {
+
+  /** Error */
+  &.o-has-error {
+    .o-form__input,
+    .o-form__textarea {
+      border-color: $o-input-error-border-color;
+    }
+  }
+
+  /** Action */
+  &.has-extras,
+  &.has-action {
+    display: flex;
+    flex-wrap: wrap;
+
+    .o-form__input {
+      // flex: 1;
+
+      &[readonly] {
+        color: $o-input-action-readonly-color;
+      }
+    }
+
+    .o-form__description {
+      width: 100%;
+    }
+
+    // Style inputs with actions/extras
+    .o-form__action + .o-form__input-wrapper {
+      .o-form__input {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+
+    .o-form__input-wrapper:first-child {
+      .o-form__input {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
+
+    .o-form__input-wrapper + .o-form__action {
+      margin-right: 0;
+      margin-left: -1px;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-top-right-radius: $o-border-radius-main;
+      border-bottom-right-radius: $o-border-radius-main;
+    }
+  }
+}
+
+
+
+/** Sizes
+--------------------------------------------------*/
+
+/** Large */
+.o-form--large {
+  .o-form__input,
+  .o-form__textarea {
+    padding: $o-input-large-padding;
+    min-height: $o-input-large-min-height;
+
+    &.has-focus,
+    &.has-value {
+      padding: $o-input-large-action-padding;
+
+      + .o-form__label {
+        display: block;
+        line-height: $o-input-large-action-label-line-height;
+        height: $o-input-large-action-label-height;
+        font-size: $o-input-large-action-label-font-size;
+        color: $o-input-large-action-label-color;
+        margin: $o-input-large-action-label-margin;
+        z-index: 1;
+
+        &::before {
+          content: " ";
+          position: absolute;
+          width: $o-input-large-action-label-before-width;
+          height: $o-input-large-action-label-before-height;
+          left: $o-input-large-action-label-before-left;
+          top: $o-input-large-action-label-before-top;
+          background-color: $o-input-large-action-label-before-background-color;
+          z-index: -1;
+          transition: $o-input-large-action-label-before-transition;
+          border-radius: $o-input-large-action-label-before-border-radius;
+        }
+      }
+    }
+  }
+
+  .o-form__label {
+    margin: $o-input-large-label-margin;
+  }
+
+  .o-form__extras,
+  .o-form__action {
+    height: $o-input-large-height;
+    padding: 0 $o-spacing-base / 2;
+  }
+
+  .o-form__textarea {
+    height: auto;
+
+    &.has-focus, &.has-value {
+      padding: ($o-spacing-base + 2px) ($o-spacing-base / 2) ($o-spacing-base / 2);
+    }
+  }
+}

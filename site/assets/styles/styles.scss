@@ -1,0 +1,13 @@
+/**
+ * Orange
+ */
+
+$o-font-icon-url: '../fonts'; // Nuxt font path override
+
+/** Orange components */
+@import '../../../src/scss/src/styles';
+
+/** Documentation specific styles */
+@import './docs/_docs';
+@import './docs/_landing';
+@import './docs/_storybook';

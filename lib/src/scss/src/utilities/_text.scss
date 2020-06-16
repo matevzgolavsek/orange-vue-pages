@@ -1,0 +1,117 @@
+/**
+ * Text
+ */
+
+/** Align
+--------------------------------------------------*/
+@each $alignment in $o-text-alignments {
+  .text-#{$alignment} {
+    text-align: #{$alignment};
+  }
+}
+
+/** Responsive */
+@each $breakpoint-key, $breakpoint-value in $o-breakpoints {
+  @each $alignment in $o-text-alignments {
+    @include breakpoint-and-up($breakpoint-key) {
+      .#{$breakpoint-key}\:text-#{$alignment} {
+        text-align: #{$alignment};
+      }
+    }
+  }
+}
+
+
+/** Transform
+--------------------------------------------------*/
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-lowercase {
+  text-transform: lowercase;
+}
+
+
+/** Style
+--------------------------------------------------*/
+
+.text-italic {
+  font-style: italic;
+}
+
+.text-style-normal {
+  font-style: normal;
+}
+
+
+/** Sizes
+--------------------------------------------------*/
+
+@each $name, $size in $o-font-sizes {
+  .fs-#{$name} {
+    font-size: $size;
+  }
+}
+
+/** Responsive */
+@each $breakpoint-key, $breakpoint-value in $o-breakpoints {
+  @each $name, $size in $o-font-sizes {
+    @include breakpoint-and-up($breakpoint-key) {
+      .#{$breakpoint-key}\:fs-#{$name} {
+        font-size: #{$size};
+      }
+    }
+  }
+}
+
+/** Decoration
+--------------------------------------------------*/
+
+.text-underline {
+  text-decoration: underline;
+}
+
+.hover\:text-underline {
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.text-line-through {
+  text-decoration: line-through;
+}
+
+.hover\:text-line-through {
+  &:hover {
+    text-decoration: line-through;
+  }
+}
+
+.text-no-underline {
+  text-decoration: none;
+}
+
+.hover\:text-no-underline {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+/** Font Weights
+--------------------------------------------------*/
+@each $name, $weight in $o-font-weights {
+  .font-#{$name} {
+    font-weight: $weight;
+  }
+}
+
+/** Ellipsis
+--------------------------------------------------*/
+
+.text-ellipsis {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

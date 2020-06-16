@@ -1,0 +1,113 @@
+/**
+ * Label
+ */
+
+.o-label {
+  border-radius: $o-label-border-radius;
+  font-size: $o-label-font-size;
+  display: inline-flex;
+  align-items: center;
+  padding: $o-label-padding;
+  height: $o-label-height;
+  background-color: $o-label-background-color;
+  color: $o-label-text-color;
+
+  [class^="o-icon-"], [class*=" o-icon-"] {
+    font-size: $o-label-icon-font-size;
+    margin-right: $o-label-icon-margin-right;
+  }
+
+  + .o-label {
+    margin-left: $o-label-margin-left;
+  }
+}
+
+/** Styles
+--------------------------------------------------*/
+
+/** Small */
+.o-label--small {
+  padding: $o-label-small-padding;
+  height: $o-label-small-height;
+}
+
+/** Dot */
+.o-label--dot {
+  width: $o-label-dot-width-height;
+  height: $o-label-dot-width-height;
+  padding: 0;
+}
+
+/** Pill */
+.o-label--pill {
+  width: $o-label-pill-width;
+  height: $o-label-pill-height;
+}
+
+
+/** States
+--------------------------------------------------*/
+
+.o-label--dismiss {
+  [class^="o-icon-"], [class*=" o-icon-"] {
+    &:hover {
+      cursor: pointer;
+      color: $o-label-dismiss-icon-hover-color;
+    }
+  }
+}
+
+/** Colors
+--------------------------------------------------*/
+
+/** Regular style colors */
+@each $o-prefix, $o-meaning in $o-colors {
+  @each $o-colorKey, $o-colorValue in $o-meaning {
+
+    @if ($o-colorKey == 'base') {
+      .o-label--#{$o-prefix} {
+        background-color: rgba($o-colorValue, 0.1);
+        color: $o-colorValue;
+
+        &.o-label--dismiss {
+          [class^="o-icon-"], [class*=" o-icon-"] {
+            &:hover {
+              color: color($o-prefix, 'dark');
+            }
+          }
+        }
+      }
+    } @else {
+      .o-label--#{$o-prefix}-#{$o-colorKey} {
+        background-color: rgba($o-colorValue, 0.1);
+        color: $o-colorValue;
+
+        &.o-label--dismiss {
+          [class^="o-icon-"], [class*=" o-icon-"] {
+            &:hover {
+              color: color($o-prefix, 'dark');
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/** Dot and pill colors */
+@each $o-prefix, $o-meaning in $o-colors {
+  @each $o-colorKey, $o-colorValue in $o-meaning {
+
+    @if ($o-colorKey == 'base') {
+      .o-label--dot.o-label--#{$o-prefix},
+      .o-label--pill.o-label--#{$o-prefix} {
+        background-color: $o-colorValue;
+      }
+    } @else {
+      .o-label--dot.o-label--#{$o-prefix}-#{$o-colorKey},
+      .o-label--pill.o-label--#{$o-prefix}-#{$o-colorKey} {
+        background-color: $o-colorValue;
+      }
+    }
+  }
+}
